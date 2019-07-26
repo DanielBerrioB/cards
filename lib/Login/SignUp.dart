@@ -48,8 +48,9 @@ class _SignUp extends State<SignUp> {
                     ),
                     actions: <Widget>[
                       new FlatButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          child: Text("Cerrar"))
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: Text("Cerrar"),
+                      )
                     ],
                   );
                 });
@@ -105,13 +106,11 @@ class _SignUp extends State<SignUp> {
       );
     }
 
-    // TODO: implement build
     return new Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
         elevation: 1.0,
         title: Text("Registro"),
-        actions: <Widget>[],
       ),
       body: new Container(
         child: new SingleChildScrollView(
@@ -122,35 +121,40 @@ class _SignUp extends State<SignUp> {
               children: <Widget>[
                 new Container(
                   padding: EdgeInsets.only(
-                      left: 18.0,
-                      right: 18.0,
-                      top: MediaQuery.of(context).size.height / 3 - 160),
+                    left: 18.0,
+                    right: 18.0,
+                    top: MediaQuery.of(context).size.height / 3 - 160,
+                  ),
                   child: TextField(
                     maxLength: 20,
                     controller: txtUser,
                     decoration: InputDecoration(
-                        icon: Icon(Icons.person),
-                        labelText: "Ingrese su nombre de usuario(Avatar)*"),
+                      icon: Icon(Icons.person),
+                      labelText: "Ingrese su nombre de usuario(Avatar)*",
+                    ),
                   ),
                 ),
                 new Container(
                   padding: EdgeInsets.only(
-                      left: 18.0,
-                      right: 18.0,
-                      top: MediaQuery.of(context).size.height / 3 - 50),
+                    left: 18.0,
+                    right: 18.0,
+                    top: MediaQuery.of(context).size.height / 3 - 50,
+                  ),
                   child: TextField(
                     maxLength: 30,
                     controller: txtNameUser,
                     decoration: InputDecoration(
-                        icon: Icon(Icons.person),
-                        labelText: "Ingrese su nombre*"),
+                      icon: Icon(Icons.person),
+                      labelText: "Ingrese su nombre*",
+                    ),
                   ),
                 ),
                 new Container(
                   padding: EdgeInsets.only(
-                      left: 18.0,
-                      right: 18.0,
-                      top: MediaQuery.of(context).size.height / 3 + 60),
+                    left: 18.0,
+                    right: 18.0,
+                    top: MediaQuery.of(context).size.height / 3 + 60,
+                  ),
                   child: TextField(
                     maxLength: 30,
                     controller: txtEmail,
@@ -162,36 +166,41 @@ class _SignUp extends State<SignUp> {
                 ),
                 new Container(
                   padding: EdgeInsets.only(
-                      left: 18.0,
-                      right: 18.0,
-                      top: MediaQuery.of(context).size.height / 3 + 170),
+                    left: 18.0,
+                    right: 18.0,
+                    top: MediaQuery.of(context).size.height / 3 + 170,
+                  ),
                   child: TextField(
                     maxLength: 40,
                     controller: txtPassword,
                     obscureText: true,
                     decoration: InputDecoration(
-                        icon: Icon(Icons.security),
-                        labelText: "Ingrese su contraseña*"),
+                      icon: Icon(Icons.security),
+                      labelText: "Ingrese su contraseña*",
+                    ),
                   ),
                 ),
                 new Container(
                   padding: EdgeInsets.only(
-                      left: 18.0,
-                      right: 18.0,
-                      top: MediaQuery.of(context).size.height / 3 + 270),
+                    left: 18.0,
+                    right: 18.0,
+                    top: MediaQuery.of(context).size.height / 3 + 270,
+                  ),
                   child: TextField(
                     maxLength: 40,
                     controller: txtPasswordVerify,
                     obscureText: true,
                     decoration: InputDecoration(
-                        icon: Icon(Icons.security),
-                        labelText: "Ingrese su contraseña de nuevo*"),
+                      icon: Icon(Icons.security),
+                      labelText: "Ingrese su contraseña de nuevo*",
+                    ),
                   ),
                 ),
                 Container(
                   padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height / 3 + 350,
-                      bottom: 10.0),
+                    top: MediaQuery.of(context).size.height / 3 + 350,
+                    bottom: 10.0,
+                  ),
                   child: Center(
                     child: buttonRegister(),
                   ),

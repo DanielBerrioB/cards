@@ -48,12 +48,13 @@ class _LogIn extends State<LogIn> {
       } else {
         if (state == 1) {
           return SizedBox(
-              width: 26.0,
-              height: 26.0,
-              child: CircularProgressIndicator(
-                backgroundColor: Colors.white,
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
-              ));
+            width: 26.0,
+            height: 26.0,
+            child: CircularProgressIndicator(
+              backgroundColor: Colors.white,
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+            ),
+          );
         } else {
           return Icon(
             Icons.check,
@@ -72,10 +73,12 @@ class _LogIn extends State<LogIn> {
         key: Key("logIn"),
         onTap: () async {
           if (txtPassword.text.isEmpty || txtUser.text.trim().isEmpty) {
-            _scaffoldKey.currentState.showSnackBar(SnackBar(
-              content: Text("Los campos estan incompletos"),
-              duration: Duration(seconds: 4),
-            ));
+            _scaffoldKey.currentState.showSnackBar(
+              SnackBar(
+                content: Text("Los campos estan incompletos"),
+                duration: Duration(seconds: 4),
+              ),
+            );
           } else {
             setState(() {
               state = 1;
@@ -87,10 +90,12 @@ class _LogIn extends State<LogIn> {
               setState(() {
                 state = 0;
               });
-              _scaffoldKey.currentState.showSnackBar(SnackBar(
-                content: Text("Ha ocurrido un error revisa bien tus datos"),
-                duration: Duration(seconds: 4),
-              ));
+              _scaffoldKey.currentState.showSnackBar(
+                SnackBar(
+                  content: Text("Ha ocurrido un error revisa bien tus datos"),
+                  duration: Duration(seconds: 4),
+                ),
+              );
             } else {
               if (result.data["user"] == null) {
                 setState(() {
@@ -106,11 +111,13 @@ class _LogIn extends State<LogIn> {
                 });
                 _setUserString(txtUser.text);
                 Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => AnimatedListExample(
-                              email: txtUser.text,
-                            )));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AnimatedListExample(
+                          email: txtUser.text,
+                        ),
+                  ),
+                );
               }
             }
           }
@@ -145,129 +152,136 @@ class _LogIn extends State<LogIn> {
 
     Future<bool> _backBlock(context) {
       return showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-                title: Text("Quieres salir de la app"),
-                actions: <Widget>[
-                  FlatButton(
-                      child: Text("No"),
-                      onPressed: () => Navigator.pop(context, false)),
-                  FlatButton(
-                    child: Text("Si"),
-                    onPressed: () => Navigator.pop(context, true),
-                  )
-                ],
-              ));
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text("Quieres salir de la app"),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text("No"),
+                  onPressed: () => Navigator.pop(context, false),
+                ),
+                FlatButton(
+                  child: Text("Si"),
+                  onPressed: () => Navigator.pop(context, true),
+                )
+              ],
+            ),
+      );
     }
 
-    // TODO: implement build
     return MaterialApp(
-        theme: ThemeData(primarySwatch: Colors.red),
-        debugShowCheckedModeBanner: false,
-        home: WillPopScope(
-            child: new Scaffold(
-                key: _scaffoldKey,
-                appBar: AppBar(
-                  elevation: 1.0,
-                  title: Text("Time"),
-                  actions: <Widget>[
-                    IconButton(
-                      icon: const Icon(Icons.announcement),
-                      onPressed: () {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: Text("Información"),
-                                content: Text(
-                                  "En esta ventana podrás iniciar sesión para entrar" +
-                                      " en la app y de esta forma disfrutar del contenido de esta.",
-                                  style: TextStyle(),
-                                ),
-                                actions: <Widget>[
-                                  new FlatButton(
-                                      onPressed: () =>
-                                          Navigator.of(context).pop(),
-                                      child: Text("Cerrar"))
-                                ],
-                              );
-                            });
-                      },
-                      tooltip: 'Información',
-                    ),
-                  ],
+      theme: ThemeData(primarySwatch: Colors.red),
+      debugShowCheckedModeBanner: false,
+      home: WillPopScope(
+        child: new Scaffold(
+          key: _scaffoldKey,
+          appBar: AppBar(
+            elevation: 1.0,
+            title: Text("Time"),
+            actions: <Widget>[
+              IconButton(
+                icon: const Icon(Icons.announcement),
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text("Información"),
+                          content: Text(
+                            "En esta ventana podrás iniciar sesión para entrar" +
+                                " en la app y de esta forma disfrutar del contenido de esta.",
+                            style: TextStyle(),
+                          ),
+                          actions: <Widget>[
+                            new FlatButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              child: Text("Cerrar"),
+                            )
+                          ],
+                        );
+                      });
+                },
+                tooltip: 'Información',
+              ),
+            ],
+          ),
+          body: Container(
+            child: SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width,
                 ),
-                body: Container(
-                  child: SingleChildScrollView(
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                          maxWidth: MediaQuery.of(context).size.width),
-                      child: new Stack(
-                        children: <Widget>[
-                          Container(
-                              padding: EdgeInsets.all(16.0),
-                              height: 120.0,
-                              child: Center(
-                                child: Text(
-                                  "Welcome",
-                                  style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.height /
-                                              10),
-                                ),
-                              )),
-                          Container(
-                            padding: EdgeInsets.only(
-                                left: 18.0,
-                                right: 18.0,
-                                top: MediaQuery.of(context).size.height / 3 -
-                                    40),
-                            child: TextField(
-                              key: Key("email"),
-                              maxLength: 40,
-                              controller: txtUser,
-                              decoration: InputDecoration(
-                                  icon: Icon(Icons.person),
-                                  labelText: "Ingrese su email*"),
-                            ),
+                child: new Stack(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(16.0),
+                      height: 120.0,
+                      child: Center(
+                        child: Text(
+                          "Welcome",
+                          style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.height / 10,
                           ),
-                          Container(
-                            padding: EdgeInsets.only(
-                                left: 18.0,
-                                right: 18.0,
-                                top: MediaQuery.of(context).size.height / 3 +
-                                    60),
-                            child: TextField(
-                              key: Key("password"),
-                              maxLength: 40,
-                              obscureText: true,
-                              controller: txtPassword,
-                              decoration: InputDecoration(
-                                icon: Icon(Icons.security),
-                                labelText: "Ingrese su contraseña*",
-                              ),
-                            ),
-                          ),
-                          Container(
-                              padding: EdgeInsets.only(
-                                  top: MediaQuery.of(context).size.height / 3 +
-                                      170),
-                              child: Center(
-                                child: buttonLogIn(),
-                              )),
-                          Container(
-                            padding: EdgeInsets.only(
-                                top: MediaQuery.of(context).size.height / 3 +
-                                    220),
-                            child: Center(
-                              child: buttonSignUp(),
-                            ),
-                          )
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                )),
-            onWillPop: () => _backBlock(context)));
+                    Container(
+                      padding: EdgeInsets.only(
+                        left: 18.0,
+                        right: 18.0,
+                        top: MediaQuery.of(context).size.height / 3 - 40,
+                      ),
+                      child: TextField(
+                        key: Key("email"),
+                        maxLength: 40,
+                        controller: txtUser,
+                        decoration: InputDecoration(
+                          icon: Icon(Icons.person),
+                          labelText: "Ingrese su email*",
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(
+                        left: 18.0,
+                        right: 18.0,
+                        top: MediaQuery.of(context).size.height / 3 + 60,
+                      ),
+                      child: TextField(
+                        key: Key("password"),
+                        maxLength: 40,
+                        obscureText: true,
+                        controller: txtPassword,
+                        decoration: InputDecoration(
+                          icon: Icon(Icons.security),
+                          labelText: "Ingrese su contraseña*",
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height / 3 + 170,
+                      ),
+                      child: Center(
+                        child: buttonLogIn(),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height / 3 + 220,
+                      ),
+                      child: Center(
+                        child: buttonSignUp(),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+        onWillPop: () => _backBlock(context),
+      ),
+    );
   }
 }

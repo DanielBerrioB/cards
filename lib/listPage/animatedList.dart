@@ -175,10 +175,12 @@ class _AnimatedList extends State<AnimatedListExample> {
             }
           }"""));
       if (result.hasErrors) {
-        _scaffoldKey.currentState.showSnackBar(SnackBar(
-          content: Text("No se cargaron los datos del usuario"),
-          duration: Duration(seconds: 4),
-        ));
+        _scaffoldKey.currentState.showSnackBar(
+          SnackBar(
+            content: Text("No se cargaron los datos del usuario"),
+            duration: Duration(seconds: 4),
+          ),
+        );
       } else {
         setState(() {
           _selectedItem = null;
@@ -256,15 +258,17 @@ class _AnimatedList extends State<AnimatedListExample> {
                       children: <Widget>[
                         Container(
                           padding: EdgeInsets.only(
-                              right: 5.0,
-                              left: MediaQuery.of(context).size.width / 10),
+                            right: 5.0,
+                            left: MediaQuery.of(context).size.width / 10,
+                          ),
                           width: MediaQuery.of(context).size.width / 2 + 10,
                           child: RaisedButton.icon(
                             onPressed: () => _selectDate(context),
                             color: Colors.white,
                             splashColor: Colors.red,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(13.0)),
+                              borderRadius: BorderRadius.circular(13.0),
+                            ),
                             icon: Icon(Icons.calendar_today),
                             label:
                                 Text(txt4.text.isEmpty ? "Fecha" : txt4.text),
@@ -272,14 +276,16 @@ class _AnimatedList extends State<AnimatedListExample> {
                         ),
                         Container(
                           padding: EdgeInsets.only(
-                              right: MediaQuery.of(context).size.width / 10),
+                            right: MediaQuery.of(context).size.width / 10,
+                          ),
                           width: MediaQuery.of(context).size.width / 2 - 10,
                           child: RaisedButton.icon(
                             onPressed: () => _selectHour(context),
                             color: Colors.white,
                             splashColor: Colors.red,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(13.0)),
+                              borderRadius: BorderRadius.circular(13.0),
+                            ),
                             icon: Icon(Icons.access_time),
                             label: Text(txt3.text.isEmpty ? "Hora" : txt3.text),
                           ),
@@ -288,9 +294,10 @@ class _AnimatedList extends State<AnimatedListExample> {
                     ),
                     Container(
                       padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height / 8,
-                          right: MediaQuery.of(context).size.width / 8,
-                          left: MediaQuery.of(context).size.width / 8),
+                        top: MediaQuery.of(context).size.height / 8,
+                        right: MediaQuery.of(context).size.width / 8,
+                        left: MediaQuery.of(context).size.width / 8,
+                      ),
                       child: TextFormField(
                         decoration: InputDecoration(labelText: 'Texto'),
                         style: TextStyle(fontSize: 18.0),

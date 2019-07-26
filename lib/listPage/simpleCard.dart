@@ -19,7 +19,6 @@ class CardItem extends StatelessWidget {
   final InsideItemCard element;
   final int index;
 
-//Text('$element', style: textStyle),
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle = Theme.of(context).textTheme.display1;
@@ -39,13 +38,17 @@ class CardItem extends StatelessWidget {
             child: Card(
               elevation: 5.0,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0)),
+                borderRadius: BorderRadius.circular(10.0),
+              ),
               color: Colors.primaries[index % Colors.primaries.length],
               child: Row(
                 children: <Widget>[
                   Container(
-                    padding:
-                        EdgeInsets.only(bottom: 70.0, left: 10.0, right: 10.0),
+                    padding: EdgeInsets.only(
+                      bottom: 70.0,
+                      left: 10.0,
+                      right: 10.0,
+                    ),
                     child: Text(
                       "${element.date} - ${element.hour}",
                       style: TextStyle(fontSize: 10.5),
@@ -54,10 +57,11 @@ class CardItem extends StatelessWidget {
                   Container(
                     width: MediaQuery.of(context).size.width / 2 + 20,
                     child: Center(
-                      child: Text('${element.text}',
-                          overflow: TextOverflow.fade,
-                          style:
-                              selected ? textStyle : TextStyle(fontSize: 18.0)),
+                      child: Text(
+                        '${element.text}',
+                        overflow: TextOverflow.fade,
+                        style: selected ? textStyle : TextStyle(fontSize: 18.0),
+                      ),
                     ),
                   ),
                 ],

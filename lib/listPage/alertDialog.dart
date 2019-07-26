@@ -53,54 +53,61 @@ class _AlertDialogWindow extends State<AlertDialogWindow> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return AlertDialog(
       content: Stack(
         children: <Widget>[
           Row(
             children: <Widget>[
               Container(
-                  padding: EdgeInsets.only(right: 20.0),
-                  child: RaisedButton.icon(
-                      color: Colors.white,
-                      splashColor: Colors.red,
-                      onPressed: () => _selectDate(context),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(13.0)),
-                      icon: Icon(Icons.calendar_today),
-                      label: Text(
-                        txtDate.isEmpty ? "Fecha" : txtDate,
-                        style: TextStyle(fontSize: 11.5),
-                      ))),
+                padding: EdgeInsets.only(right: 20.0),
+                child: RaisedButton.icon(
+                  color: Colors.white,
+                  splashColor: Colors.red,
+                  onPressed: () => _selectDate(context),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(13.0),
+                  ),
+                  icon: Icon(Icons.calendar_today),
+                  label: Text(
+                    txtDate.isEmpty ? "Fecha" : txtDate,
+                    style: TextStyle(fontSize: 11.5),
+                  ),
+                ),
+              ),
               Container(
-                  child: RaisedButton.icon(
-                      color: Colors.white,
-                      splashColor: Colors.red,
-                      onPressed: () => _selectHour(context),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(13.0)),
-                      icon: Icon(Icons.access_time),
-                      label: Text(
-                        txtHour.isEmpty ? "Hora" : txtHour,
-                        style: TextStyle(fontSize: 11.5),
-                      ))),
+                child: RaisedButton.icon(
+                  color: Colors.white,
+                  splashColor: Colors.red,
+                  onPressed: () => _selectHour(context),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(13.0),
+                  ),
+                  icon: Icon(Icons.access_time),
+                  label: Text(
+                    txtHour.isEmpty ? "Hora" : txtHour,
+                    style: TextStyle(fontSize: 11.5),
+                  ),
+                ),
+              ),
             ],
           ),
           Container(
-              padding:
-                  EdgeInsets.only(top: MediaQuery.of(context).size.height / 8),
-              child: TextField(
-                maxLength: 40,
-                controller: txtEdit,
-                decoration: InputDecoration(
-                    icon: Icon(Icons.edit), labelText: "Editar"),
-              )),
+            padding:
+                EdgeInsets.only(top: MediaQuery.of(context).size.height / 8),
+            child: TextField(
+              maxLength: 40,
+              controller: txtEdit,
+              decoration:
+                  InputDecoration(icon: Icon(Icons.edit), labelText: "Editar"),
+            ),
+          ),
         ],
       ),
       actions: <Widget>[
         FlatButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: Text("Cerrar")),
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text("Cerrar"),
+        ),
         FlatButton(
           onPressed: () async {
             if (txtEdit.text.trim().isNotEmpty &&
